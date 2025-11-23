@@ -17,6 +17,14 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh './mvnw test'
+            }
+        }
+
+
+
         stage('Deploy (TO BE ADDED)') {
             steps {
                 echo "Deployment steps pending"
