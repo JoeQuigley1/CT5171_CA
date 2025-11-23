@@ -61,7 +61,7 @@
 			</plugin>
 		</plugins>
 
-		<finalName>joepetitions</finalName>
+		<finalName>joespetitions</finalName>
 
 	</build>
 
