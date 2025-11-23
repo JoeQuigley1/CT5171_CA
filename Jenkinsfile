@@ -23,7 +23,11 @@ pipeline {
             }
         }
 
-
+        stage('Package WAR') {
+            steps {
+                  sh './mvnw  clean package'
+            }
+        }
 
         stage('Deploy (TO BE ADDED)') {
             steps {
