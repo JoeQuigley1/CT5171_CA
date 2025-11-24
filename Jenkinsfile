@@ -36,10 +36,18 @@ pipeline {
             }
          }
 
-        stage('Deploy (TO BE ADDED)') {
-            steps {
-                echo "Deployment steps pending"
-            }
+         stage('Build Docker image') {
+             steps {
+                 sh 'docker build -t joespetitions .'
+             }
+         }
+
+        stage('Deploy ---Testing') {
+             steps {
+             echo 'Please deploy'
+                  sh 'docker rm -f "joespetitions-container" || true'
+                  sh 'docker run --name "joespetitions-container" -p 9090:8080 --detach joespetitions:latest'
+             }
         }
     }
 }
