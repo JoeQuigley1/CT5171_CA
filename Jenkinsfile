@@ -25,9 +25,16 @@ pipeline {
 
         stage('Package WAR') {
             steps {
-                  sh './mvnw clean package -DskipTests'
+                sh './mvnw clean package -DskipTests'
             }
         }
+
+        stage('Archive WAR') {
+//         Add fingerprint to create a hash for the archive
+            steps {
+                archiveArtifacts artifacts: 'target/joespetitions.war', fingerprint: true
+            }
+         }
 
         stage('Deploy (TO BE ADDED)') {
             steps {
