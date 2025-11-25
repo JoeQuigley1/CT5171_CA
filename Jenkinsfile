@@ -49,5 +49,10 @@ pipeline {
                   sh 'docker run --name "joespetitions-container" -p 9090:8080 --detach joespetitions:latest'
              }
         }
-    }
+        stage('Approve Deployment?') {
+             steps {
+             input message: 'Would you like to Deploy?', ok: "Deploy", cancel: "Please don't break my petition app"
+
+             }
+        }
 }
