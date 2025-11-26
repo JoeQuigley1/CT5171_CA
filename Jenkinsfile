@@ -46,7 +46,6 @@ pipeline {
              steps {
              script {
              input message:  'Would you like to deploy?', ok: 'Deploy'
-
              }
              echo 'Please deploy'
                   sh 'docker rm -f "joespetitions-container" || true'
