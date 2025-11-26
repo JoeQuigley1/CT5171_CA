@@ -42,16 +42,17 @@ pipeline {
              }
          }
 
+        stage('Approve Deployment?') {
+              steps {
+                  input message: 'Would you like to Deploy?', ok: "Deploy"
+                  }
+              }
+
         stage('Deploy ---Testing') {
              steps {
              echo 'Please deploy'
                   sh 'docker rm -f "joespetitions-container" || true'
                   sh 'docker run --name "joespetitions-container" -p 9090:8080 --detach joespetitions:latest'
-             }
-        }
-        stage('Approve Deployment?') {
-             steps {
-             input message: 'Would you like to Deploy?', ok: "Deploy", cancel: "Please don't break my petition app"
              }
         }
     }
