@@ -13,7 +13,8 @@ public class PetitionService {
 
     public PetitionService() {
         petitions.add(new Petition(1, "Fix the roads", "It's only November and the potholes are massive.", "John"));
-
+        petitions.add(new Petition(2, "Fix the windows", "It's only November and the house is freezing.", "Jane"));
+        petitions.add(new Petition(3, "Fix the drains", "It's only November and the drains keep flooding.", "Declan"));
     }
 
     public List<Petition> getAllPetitions() {
