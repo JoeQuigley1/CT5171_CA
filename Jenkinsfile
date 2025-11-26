@@ -30,7 +30,7 @@ pipeline {
         }
 
         stage('Archive WAR') {
-//         Add fingerprint to create a hash for the archive
+            //         Add fingerprint to create a hash for the archive
             steps {
                 archiveArtifacts artifacts: 'target/joespetitions.war', fingerprint: true
             }
@@ -52,7 +52,7 @@ pipeline {
         stage('Approve Deployment?') {
              steps {
              input message: 'Would you like to Deploy?', ok: "Deploy", cancel: "Please don't break my petition app"
-
              }
         }
+    }
 }
