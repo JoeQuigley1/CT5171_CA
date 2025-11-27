@@ -44,10 +44,10 @@ pipeline {
 
         stage('Deploy & Manually deploy ---please work---') {
              steps {
-             script {
-             input message:  'Would you like to deploy?', ok: 'Deploy'
+             input {
+                     message 'Would you like to deploy?'
+                     ok 'Deploy'
              }
-
              echo 'Please deploy'
                   sh 'docker rm -f "joespetitions-container" || true'
                   sh 'docker run --name "joespetitions-container" -p 9090:8080 --detach joespetitions:latest'

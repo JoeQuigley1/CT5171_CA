@@ -10,11 +10,14 @@ import java.util.List;
 public class PetitionService {
 
     private List<Petition> petitions = new ArrayList<>();
+    private int createId;
 
     public PetitionService() {
         petitions.add(new Petition(1, "Fix the roads", "It's only November and the potholes are massive.", "John"));
         petitions.add(new Petition(2, "Fix the windows", "It's only November and the house is freezing.", "Jane"));
         petitions.add(new Petition(3, "Fix the drains", "It's only November and the drains keep flooding.", "Declan"));
+
+        createId = petitions.stream().mapToInt(Petition::getId).max().orElse(0)+1;
     }
 
     public List<Petition> getAllPetitions() {
@@ -26,6 +29,12 @@ public class PetitionService {
                 .filter(p -> p.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Petition CreatePetition(Petition petition) {
+        petition.setId(createId++);
+        petitions.add(petition);
+        return petition;
     }
 }
 
