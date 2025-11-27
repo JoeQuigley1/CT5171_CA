@@ -44,7 +44,7 @@ pipeline {
 
         stage('Deploy & Manually deploy ---please work---') {
              steps {
-                input message: 'Would you like to deploy?' ok 'Deploy'
+                input message: 'Would you like to deploy?', ok: 'Deploy'
 
                 echo 'Please deploy'
                      sh 'docker rm -f "joespetitions-container" || true'
