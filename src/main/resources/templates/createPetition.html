@@ -9,7 +9,7 @@
 <p><span>Others will be able to read and sign your petition</span></p>
 
 <div>
-    <form th:action="@{/petitions}" th:object="${petition}" method="post">
+    <form th:action="@{/create}" th:object="${petition}" method="post">
 
         <div>
             <label for="title">Title:</label><br>
@@ -17,8 +17,8 @@
         </div>
 
         <div>
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" th:field="*{author}" required>
+            <label for="author">Your Name:</label><br>
+            <input type="text" id="author" th:field="*{author}" required>
         </div>
         <div>
             <label for="description">Description:</label><br>

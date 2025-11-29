@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PetitionController {
@@ -32,6 +33,16 @@ public class PetitionController {
     @GetMapping("/create")
     public String getPetitionForm(Model model) {
         model.addAttribute("petition", new Petition());
-        return "/createPetition";
+        return "createPetition";
     }
+
+    @PostMapping("/create")
+    public String submitPetition(Petition petition) {
+        petitionService.CreatePetition(petition);
+        return "redirect:/petitions";
+    }
+
+
+
 }
+

@@ -16,13 +16,13 @@ public class Petition {
     }
 
     public int getId() { return id; }
-    public int setId(int id) { return this.id = id; }
+    public void setId(int id) {  this.id = id; }
     public String getTitle() { return title; }
-    public String setTitle() { return this.title = title; }
+    public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }
-    public String setDescription() { return this.description = description; }
+    public void setDescription(String description) {  this.description = description; }
     public String getAuthor() { return author; }
-    public String setAuthor() { return this.author = author; }
+    public void setAuthor(String author) {  this.author = author; }
 
 }
 
