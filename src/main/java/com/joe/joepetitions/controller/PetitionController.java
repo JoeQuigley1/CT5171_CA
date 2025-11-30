@@ -26,6 +26,11 @@ public class PetitionController {
         var petitions = petitionService.searchPetitions(keyword);
         model.addAttribute("petitions", petitions);
         model.addAttribute("keyword", keyword);
+
+        if (keyword !=null && !keyword.isEmpty()) {
+            return "searchResult";
+        }
+
         return "petitions";
     }
 

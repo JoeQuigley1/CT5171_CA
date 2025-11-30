@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Petitions</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1 th:text="'Search results for: ' + ${keyword}" class="result-header"></h1>
+
+<div class="search-results">
+    <div>
+        <form method="get" th:action="@{/petitions}">
+            <div th:if="${keyword}">
+                <p>Showing results for "<span th:text="${keyword}"></span>"</p>
+                <a class="secondary-button" th:href="@{/petitions}">Back to all petitions</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <p>
+        <span>Click view to see the petition in detail</span>
+    </p>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Details</th>
+    </tr>
+
+    <tr th:each="petition : ${petitions}">
+        <td th:text="${petition.id}"></td>
+        <td th:text="${petition.title}"></td>
+        <td th:text="${petition.description}"></td>
+        <td th:text="${petition.author}"></td>
+        <td>
+            <a th:href="@{'/petitions/' + ${petition.id}}">View</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
