@@ -1,6 +1,7 @@
 package com.joe.joepetitions.service;
 
 import com.joe.joepetitions.model.Petition;
+import com.joe.joepetitions.model.Signature;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,9 +14,17 @@ public class PetitionService {
     private int createId;
 
     public PetitionService() {
-        petitions.add(new Petition(1, "Fix the roads", "It's only November and the potholes are massive.", "John"));
-        petitions.add(new Petition(2, "Fix the windows", "It's only November and the house is freezing.", "Jane"));
-        petitions.add(new Petition(3, "Fix the drains", "It's only November and the drains keep flooding.", "Declan"));
+        Petition p1 = new Petition(1, "Fix the roads", "It's only November and the potholes are massive.", "John");
+        Petition p2 = new Petition(2, "Fix the windows", "It's only November and the house is freezing.", "Jane");
+        Petition p3 = new Petition(3, "Fix the drains", "It's only November and the drains keep flooding.", "Declan");
+
+        p1.addSignature(new Signature("Alice Doe", "alice@example.com", 123456789));
+        p2.addSignature(new Signature("Bob Dylan", "bob@example.com", 123456789));
+        p3.addSignature(new Signature("Charlie Chaplin", "charlie@example.com", 123456789));
+
+        petitions.add(p1);
+        petitions.add(p2);
+        petitions.add(p3);
 
         createId = petitions.stream().mapToInt(Petition::getId).max().orElse(0)+1;
     }

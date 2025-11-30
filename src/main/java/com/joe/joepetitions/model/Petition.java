@@ -1,10 +1,15 @@
 package com.joe.joepetitions.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Petition {
     private int id;
     private String title;
     private String description;
     private String author;
+
+    private List<Signature> signatures = new ArrayList<>();
 
     public Petition() {}
 
@@ -24,5 +29,11 @@ public class Petition {
     public String getAuthor() { return author; }
     public void setAuthor(String author) {  this.author = author; }
 
+    public List<Signature> getSignatures() {
+        return signatures;
+    }
+    public void addSignature(Signature signature) {
+        this.signatures.add(signature);
+    }
 }
 

@@ -1,6 +1,7 @@
 package com.joe.joepetitions.controller;
 
 import com.joe.joepetitions.model.Petition;
+import com.joe.joepetitions.model.Signature;
 import com.joe.joepetitions.service.PetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class PetitionController {
         Petition petition = petitionService.getPetitionById(id);
         model.addAttribute("petition", petition);
 
+        model.addAttribute("signature", new Signature());
+
         return "petitionDetail";
     }
 
@@ -42,6 +45,17 @@ public class PetitionController {
         return "redirect:/petitions";
     }
 
+    @PostMapping("/petitions/{id}/sign")
+    public String savePetitionSignature(@PathVariable int id, Signature signature) {
+        Petition petition =petitionService.getPetitionById(id);
+
+        if (petition != null) {
+            petition.addSignature(signature);
+        }
+
+        return "redirect:/petitions/" + id;
+
+    }
 
 
 }

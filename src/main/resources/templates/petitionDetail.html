@@ -11,5 +11,35 @@
     <span th:text="${petition.author}"> Author</span>
 
 </p>
+
+<div>
+<form th:action="@{'/petitions/' + ${petition.id} + '/sign'}"
+th:object="${signature}"
+method="POST">
+
+    <h3>Sign this Petition</h3>
+    <div>
+        <label for="name"> Name: </label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+    <div>
+        <label for="email"> Email: </label>
+        <input type="email" id="email" th:field="*{email}">
+    </div>
+    <div>
+        <label for="phoneNumber"> Phone Number: </label>
+        <input type="number" id="phoneNumber">
+    </div>
+    <button type="submit">Sign</button>
+</form>
+</div>
+<div>
+    <h2>Signatures</h2>
+    <table>
+        <tr th:each="signature: ${petition.signatures}">
+            <th th:text="${signature.name}"> </th>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
