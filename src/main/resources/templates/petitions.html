@@ -2,25 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Petitions</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 <h1>All Petitions</h1>
 
-<form th:action="@{/petitions}" method="get">
-    <input type="text"
-           name="keyword"
-           th:value="${keyword}"
-           placeholder="Search petitions...">
-    <button type="submit">Search</button>
+<div class="top-row">
+    <div>
+        <form th:action="@{/petitions}" method="get">
+            <div class="search-row">
+                <input type="text"
+                       name="keyword"
+                       th:value="${keyword}"
+                       placeholder="Search petitions..."
+                       class="search-input">
+                <button type="submit">Search</button>
+            </div>
 
-    <div th:if="${keyword}">
-        <p>Showing results for "<span th:text="${keyword}"></span>"</p>
-        <button>
-            <a th:href="@{/petitions}">Clear search</a>
-        </button>
+            <div th:if="${keyword}">
+                <p>Showing results for "<span th:text="${keyword}"></span>"</p>
+                <a th:href="@{/petitions}" class="link-button">Clear search</a>
+            </div>
+        </form>
     </div>
-</form>
+
+    <div class="create-petition-box">
+        <p>Want to have a say?</p>
+        <p>Create a petition below:</p>
+        <a th:href="@{'/create'}" class="link-button">Create Petition</a>
+    </div>
+</div>
+
+
+<div>
+    <p>
+        <span>Click view to see the petition in detail</span>
+    </p>
+</div>
 
 <table>
     <tr>
@@ -41,16 +60,6 @@
         </td>
     </tr>
 </table>
-<div>
-    <p>
-        <span>Want to have a say?</span>
-        <span>Create a petition below:</span>
-    </p>
-    <a th:href="@{'/create'}">
-        <button type="button" >Create Petition</button>
-    </a>
-</div>
-
 
 </body>
 </html>

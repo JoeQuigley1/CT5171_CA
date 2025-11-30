@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Create a Petition</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -22,11 +23,11 @@
         </div>
         <div>
             <label for="description">Description:</label><br>
-            <textarea id="description" th:field="*{description}" rows="5" cols="40" required></textarea>
+            <textarea id="description" th:field="*{description}" required></textarea>
         </div>
         <br>
         <button type="submit">Create Petition</button>
-        <button><a th:href="@{/petitions}">Cancel</a></button>
+        <a th:href="@{/petitions}" class="link-button">Cancel</a>
 
     </form>
 </div>
