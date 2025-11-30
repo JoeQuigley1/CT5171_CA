@@ -6,11 +6,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PetitionService {
 
-    private List<Petition> petitions = new ArrayList<>();
+    private final List<Petition> petitions = new ArrayList<>();
     private int createId;
 
     public PetitionService() {
@@ -31,6 +32,19 @@ public class PetitionService {
 
     public List<Petition> getAllPetitions() {
         return petitions;
+    }
+
+    public List<Petition> searchPetitions(String keyword) {
+
+        if (keyword == null || keyword.isBlank()){
+            return getAllPetitions();
+        }
+        String lower = keyword.toLowerCase();
+        return petitions.stream().filter(p ->
+                        (p.getTitle() != null && p.getTitle().toLowerCase().contains(lower)) ||
+                                (p.getDescription() != null && p.getDescription().toLowerCase().contains(lower)))
+                .collect(Collectors.toList());
+
     }
 
     public Petition getPetitionById(int id) {

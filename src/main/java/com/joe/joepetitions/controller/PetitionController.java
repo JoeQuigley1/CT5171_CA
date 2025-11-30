@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PetitionController {
@@ -18,8 +19,13 @@ public class PetitionController {
     private PetitionService petitionService;
     // Think about removing this / as there is a lot of repition in the deployed url jospetitions/petition/petitions
     @GetMapping("/petitions")
-    public String listPetitions(Model model) {
-        model.addAttribute("petitions", petitionService.getAllPetitions());
+    public String listPetitions(
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model) {
+
+        var petitions = petitionService.searchPetitions(keyword);
+        model.addAttribute("petitions", petitions);
+        model.addAttribute("keyword", keyword);
         return "petitions";
     }
 
@@ -54,9 +60,6 @@ public class PetitionController {
         }
 
         return "redirect:/petitions/" + id;
-
     }
-
-
 }
 

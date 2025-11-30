@@ -7,6 +7,14 @@
 
 <h1>All Petitions</h1>
 
+<form th:action="@{/petitions}" method="get">
+    <input type="text"
+           name="keyword"
+           th:value="${keyword}"
+           placeholder="Search petitions...">
+    <button type="submit">Search</button>
+</form>
+
 <table>
     <tr>
         <th>ID</th>
