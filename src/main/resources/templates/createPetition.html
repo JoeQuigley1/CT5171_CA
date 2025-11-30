@@ -10,24 +10,24 @@
 <p><span>Others will be able to read and sign your petition</span></p>
 
 <div>
-    <form th:action="@{/create}" th:object="${petition}" method="post">
+    <form method="post" th:action="@{/create}" th:object="${petition}">
 
         <div>
             <label for="title">Title:</label><br>
-            <input type="text" id="title" th:field="*{title}" required>
+            <input id="title" required th:field="*{title}" type="text">
         </div>
 
         <div>
             <label for="author">Your Name:</label><br>
-            <input type="text" id="author" th:field="*{author}" required>
+            <input id="author" required th:field="*{author}" type="text">
         </div>
         <div>
             <label for="description">Description:</label><br>
-            <textarea id="description" th:field="*{description}" required></textarea>
+            <textarea id="description" required th:field="*{description}"></textarea>
         </div>
         <br>
         <button type="submit">Create Petition</button>
-        <a th:href="@{/petitions}" class="link-button">Cancel</a>
+        <a class="link-button" th:href="@{/petitions}">Cancel</a>
 
     </form>
 </div>

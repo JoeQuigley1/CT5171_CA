@@ -7,6 +7,7 @@ body {
 
 h1, h2, h3 {
     color: black;
+    margin-bottom: 0.75rem;
 }
 
 nav {
@@ -28,7 +29,7 @@ table {
     background: white;
 }
 
-th, td {
+th {
     padding: 0.5rem;
     border: 1px solid lightgray;
 }
@@ -122,3 +123,60 @@ a:hover {
     color: white !important;
     text-decoration: none;
 }
+
+.petition-info,
+.signature-div,
+.sign-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 5px lightgray;
+}
+
+.petition-info p {
+    margin: 0.5rem 0;
+}
+
+.signature-div {
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    background: whitesmoke;
+}
+
+.sign-form form div {
+    margin-bottom: 1rem;
+}
+
+.bottom-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+.signature-div,
+.sign-form {
+    flex: 1;
+}
+
+.signature-div {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px lightgray;
+}
+
+.sign-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px lightgray;
+}
+
+.signature-div th {
+    padding: 0.5rem;
+    border: 1px solid lightgray;
+    background: whitesmoke;
+}
+

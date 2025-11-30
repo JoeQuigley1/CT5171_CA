@@ -10,19 +10,19 @@
 
 <div class="top-row">
     <div>
-        <form th:action="@{/petitions}" method="get">
+        <form method="get" th:action="@{/petitions}">
             <div class="search-row">
-                <input type="text"
+                <input class="search-input"
                        name="keyword"
-                       th:value="${keyword}"
                        placeholder="Search petitions..."
-                       class="search-input">
+                       th:value="${keyword}"
+                       type="text">
                 <button type="submit">Search</button>
             </div>
 
             <div th:if="${keyword}">
                 <p>Showing results for "<span th:text="${keyword}"></span>"</p>
-                <a th:href="@{/petitions}" class="link-button">Clear search</a>
+                <a class="link-button" th:href="@{/petitions}">Clear search</a>
             </div>
         </form>
     </div>
@@ -30,7 +30,7 @@
     <div class="create-petition-box">
         <p>Want to have a say?</p>
         <p>Create a petition below:</p>
-        <a th:href="@{'/create'}" class="link-button">Create Petition</a>
+        <a class="link-button" th:href="@{'/create'}">Create Petition</a>
     </div>
 </div>
 

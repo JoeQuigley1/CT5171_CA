@@ -42,11 +42,11 @@ pipeline {
              }
          }
 
-        stage('Deploy & Manually deploy ---please work---') {
+        stage('Approve & Manually deploy') {
              steps {
                 input message: 'Would you like to deploy?', ok: 'Deploy'
 
-                echo 'Please deploy'
+                echo 'Deploying APP to EC2'
                      sh 'docker rm -f "joespetitions-container" || true'
                      sh 'docker run --name "joespetitions-container" -p 9090:8080 --detach joespetitions:latest'
              }

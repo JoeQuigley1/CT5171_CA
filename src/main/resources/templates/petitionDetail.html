@@ -8,46 +8,53 @@
 
 <h1 th:text="${petition.title}"> Petition</h1>
 
-<p>
-    <span th:text="${petition.author}"> Author</span>
-
-</p>
-
-<div>
-<form th:action="@{'/petitions/' + ${petition.id} + '/sign'}"
-th:object="${signature}"
-method="POST">
-
-    <h3>Sign this Petition</h3>
-    <div>
-        <label for="name"> Name: </label>
-        <input type="text" id="name" th:field="*{name}">
-    </div>
-    <div>
-        <label for="email"> Email: </label>
-        <input type="email" id="email" th:field="*{email}">
-    </div>
-    <div>
-        <label for="phoneNumber"> Phone Number: </label>
-        <input type="number" id="phoneNumber">
-    </div>
-    <button type="submit">Sign</button>
-</form>
-</div>
-<div>
-    <h2>Signatures</h2>
-    <table>
-        <tr th:each="signature: ${petition.signatures}">
-            <th th:text="${signature.name}"> </th>
-        </tr>
-    </table>
+<div class="petition-info">
+    <p>
+        <strong> Author: </strong>
+        <span th:text="${petition.author}"></span>
+    </p>
+    <p>
+        <strong>Description: </strong>
+        <span th:text="${petition.description}"></span>
+    </p>
 </div>
 
-<div>
-    <a th:href="@{/petitions}" class="link-button">
-        Back to all petitions
-    </a>
+<div class="bottom-wrapper">
+    <div class="signature-div">
+        <h2>Signatures</h2>
+        <table>
+            <tr th:each="signature: ${petition.signatures}">
+                <th th:text="${signature.name}"></th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="sign-form">
+        <form method="POST"
+              th:action="@{'/petitions/' + ${petition.id} + '/sign'}"
+              th:object="${signature}">
+
+            <h3>Sign this Petition</h3>
+            <div>
+                <label for="name"> Name: </label>
+                <input id="name" required th:field="*{name}" type="text">
+            </div>
+            <div>
+                <label for="email"> Email: </label>
+                <input id="email" required th:field="*{email}" type="email">
+            </div>
+            <div>
+                <label for="phoneNumber"> Phone Number: </label>
+                <input id="phoneNumber" required type="number">
+            </div>
+            <button type="submit">Sign</button>
+            <a class="link-button" th:href="@{/petitions}">
+                Back to all petitions
+            </a>
+        </form>
+    </div>
 </div>
+
 
 </body>
 </html>
