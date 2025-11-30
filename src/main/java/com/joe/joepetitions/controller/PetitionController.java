@@ -17,7 +17,7 @@ public class PetitionController {
     //Autowired gives access of positionService to PetitionController
     @Autowired
     private PetitionService petitionService;
-    // Think about removing this / as there is a lot of repition in the deployed url jospetitions/petition/petitions
+    //Display all petitions or search petitions and display search results page
     @GetMapping("/petitions")
     public String listPetitions(
             @RequestParam(value = "keyword", required = false) String keyword,
@@ -33,7 +33,7 @@ public class PetitionController {
 
         return "petitions";
     }
-
+    // Display petition Detail based on the petition id and the signatures
     @GetMapping("/petitions/{id}")
     public String showPetition(@PathVariable int id, Model model) {
         Petition petition = petitionService.getPetitionById(id);
@@ -44,18 +44,21 @@ public class PetitionController {
         return "petitionDetail";
     }
 
+    // Gets the create a petition form
     @GetMapping("/create")
     public String getPetitionForm(Model model) {
         model.addAttribute("petition", new Petition());
         return "createPetition";
     }
 
+    //After petition is created return to all petitions view
     @PostMapping("/create")
     public String submitPetition(Petition petition) {
         petitionService.CreatePetition(petition);
         return "redirect:/petitions";
     }
 
+    // Handle adding a signature to a petition and  redirects to detail page
     @PostMapping("/petitions/{id}/sign")
     public String savePetitionSignature(@PathVariable int id, Signature signature) {
         Petition petition =petitionService.getPetitionById(id);

@@ -45,7 +45,7 @@ public class PetitionServiceTest {
         assertNotNull(signature);
         assertEquals("Alice Doe", signature.getName());
         assertEquals("alice@example.com", signature.getEmail());
-        assertEquals(12345678, signature.getPhoneNumber());
+        assertEquals(123456789, signature.getPhoneNumber());
     }
 
 }

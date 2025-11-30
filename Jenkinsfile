@@ -25,7 +25,7 @@ pipeline {
 
         stage('Package WAR') {
             steps {
-                sh './mvnw clean package -DskipTests'
+                sh './mvnw package -DskipTests'
             }
         }
 

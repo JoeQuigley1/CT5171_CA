@@ -6,17 +6,18 @@ public class Signature {
     private String email;
     private int phoneNumber;
 
-
+    // Default constructor for signatures
     public Signature() {
 
     }
-
+    // Helps add signature details
     public Signature(String name, String email, int number) {
         this.name = name;
         this.email = email;
         this.phoneNumber = number;
     }
 
+    //Getters and Setters
     public String getName() {
         return name;
     }
