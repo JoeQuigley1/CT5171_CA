@@ -5,12 +5,15 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div class="create-form-headers">
+    <h1>Use the Form below to create a petition</h1>
+    <p>
+        <span>Others will be able to read and sign your petition</span>
+    </p>
+</div>
 
-<h1>Use the Form below to create a petition</h1>
-<p><span>Others will be able to read and sign your petition</span></p>
-
-<div>
-    <form method="post" th:action="@{/create}" th:object="${petition}">
+<div class="create-petition-wrapper">
+    <form method="post" class="create-form" th:action="@{/create}" th:object="${petition}">
 
         <div>
             <label for="title">Title:</label><br>
@@ -26,8 +29,11 @@
             <textarea id="description" required th:field="*{description}"></textarea>
         </div>
         <br>
-        <button type="submit">Create Petition</button>
-        <a class="link-button" th:href="@{/petitions}">Cancel</a>
+        <div class="create-form-buttons">
+            <button type="submit">Create Petition</button>
+            <a class="link-button" th:href="@{/petitions}">Cancel</a>
+        </div>
+
 
     </form>
 </div>
