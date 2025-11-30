@@ -13,6 +13,13 @@
            th:value="${keyword}"
            placeholder="Search petitions...">
     <button type="submit">Search</button>
+
+    <div th:if="${keyword}">
+        <p>Showing results for "<span th:text="${keyword}"></span>"</p>
+        <button>
+            <a th:href="@{/petitions}">Clear search</a>
+        </button>
+    </div>
 </form>
 
 <table>
